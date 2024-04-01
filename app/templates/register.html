@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>home</title>
+  </head>
+  <body style="background: whitesmoke;margin-bottom: 120px;">
+    <div class="container border bg-white shadow ">
+       
+        <div class="row bg-info p-4 text-white ">
+           <h5> Tech News</h5>
+        </div>
+
+        <div class="row border">
+            <div class="col-9">
+                <ul class="d-flex p-2 h6 " style="list-style: none;">
+                    <a href="{% url 'home' %}" style="text-decoration: none;" class="text-dark"><li class="mx-3">home</li></a> 
+                 </ul>
+            </div>
+            <div class="col p-2">
+                <a href="{% url 'log' %}"><button class="btn btn-success btn-sm">Login</button></a>
+            </div>
+
+        </div>
+    </div>
+
+    {% comment %} <div class="container p-2 my-2 bg-white">
+      
+    </div> {% endcomment %}
+{% comment %} //////////////////////body//////////// {% endcomment %}
+<form action="{% url 'registers' %}" method="post">
+    {% csrf_token %}
+<div class="container p-2 my-2 bg-white">
+    <div class="row p-3 my-4 py-5">
+        <div class="col-md-4 m-2  p-3 mx-auto border">
+            <div class="row text-center bg-info p-3 h6 text-white">Register</div>
+            
+        <input type="email" class="form-control mt-3" placeholder="email" name="email">
+        <input type="password" class="form-control mt-3" placeholder="password" name="password">
+        <input type="password" class="form-control mt-3" placeholder="Repassword" name="Repassword">
+        {% if request.session.error != "" %}
+        <div class="row text-center alert-danger m-1 p-2">{{request.session.error}}</div>
+        {% endif %}
+         <button class="btn btn-success btn-sm mt-2">Register</button>
+        </div>
+       
+    </div>
+
+    
+</div> 
+</form> 
+   {% comment %} ////////////////////footer//////////// {% endcomment %}
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>

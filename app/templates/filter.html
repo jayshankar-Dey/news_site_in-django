@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>home</title>
+</head>
+<style>
+   
+</style>
+<body style="background: whitesmoke;margin-bottom: 10px; ">
+    
+    <div class="container border bg-white shadow " >
+
+        <div class="row bg-info p-4 text-white " >
+            <h5> Tech News</h5>
+        </div>
+
+        <div class="row border">
+            <div class="col-9">
+                <ul class="d-flex p-2 h6 " style="list-style: none;">
+                    <a href="{% url 'home' %}" style="text-decoration: none;" class="text-dark">
+                        <li class="mx-3">home</li>
+                    </a>
+                    
+
+                </ul>
+            </div>
+            <div class="col p-2">
+                {% comment %} {% if request.session.id == "" %}
+                <a href="{% url 'log' %}"><button class="btn btn-success btn-sm">Login</button></a>
+                {% else %}
+                <a href="{% url 'logout' %}"><button class="btn btn-danger btn-sm">{{request.session.id}}logout</button></a>
+                {% endif %} {% endcomment %}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container p-2 my-2 bg-white">
+        <ul class="d-flex p-2 h6 " style="list-style: none;">
+            <li class="mx-3">Categories:</li>
+            {% for cat in cat %}
+            
+           
+            <a href="{%  url 'filter' cat.id %}" style="text-decoration: none;color: black;"><li class="mx-3">{{cat.name}}</li></a>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% comment %} //////////////////////body//////////// {% endcomment %}
+    
+    <div class="container bg-white mt-2 shadow mb-2 body" >
+        <div class="row p-2  ">
+
+
+            <div class="col-md-8 p-2 mx-auto ">
+               
+                <div class="row h6 text-center p-3 bg-dark text-white">filter data</div>
+                
+               
+                {% for all in all %}
+                
+                <a href="{% url 'show' all.id %}" style="text-decoration: none;">
+                <div class="row p-2 border mx-2 mt-2 text-dark">
+                   
+                    <div class="col-4">
+                       <img src="\media\{{all.image1}}" alt="" width="80" height="80">
+                    </div>
+                    <div class="col-7">
+                        <h6>{{all.ptitle}}</h6>
+                        <p>{{all.pdis1 | slice:35}}..Read..more</p>
+                        
+                    </div>
+                 
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+
+           
+            
+    </div>
+
+  
+    {% comment %} ////////////////////footer//////////// {% endcomment %}
+    <div class="container p-3 bg-dark text-white">
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <ul>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <ul>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                    <li>news</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
